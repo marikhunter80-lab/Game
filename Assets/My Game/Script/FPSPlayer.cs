@@ -4,10 +4,14 @@ using UnityEngine;
 public class FPSPlayer : MonoBehaviour
 {
     [Header("Movement")]
-    public float walkSpeed = 5f;
-    public float runSpeed = 9f;
+    public float walkSpeed = 6f;
+    public float runSpeed = 10.5f;
     public float jumpHeight = 1.2f;
     public float gravity = -20f;
+    [Tooltip("How quickly the player accelerates up to the target speed.")]
+    public float moveAcceleration = 45f;
+    [Tooltip("How quickly the player stops when there is no input. Higher = snappier, less ice.")]
+    public float moveDeceleration = 80f;
 
     [Header("Look")]
     public Transform cameraTransform;
@@ -17,9 +21,9 @@ public class FPSPlayer : MonoBehaviour
     [Header("Head Bob")]
     public float headIdleBobAmount = 0.015f;
     public float headIdleBobSpeed = 1.6f;
-    public float walkBobAmount = 0.05f;
-    public float walkBobSpeed = 9f;
-    public float runBobMultiplier = 1.6f;
+    public float walkBobAmount = 0.045f;
+    public float walkBobSpeed = 7f;
+    public float runBobMultiplier = 1.4f;
     public float bobSmoothing = 8f;
     public float strafeTilt = 1.5f;
     public float tiltSmoothing = 6f;
@@ -47,12 +51,15 @@ public class FPSPlayer : MonoBehaviour
     private float bobTimer = 0f;
     private float currentTilt = 0f;
     private Vector3 currentBobOffset;
+    private Vector3 currentHorizontalVel;
 
     private Vector3 flPosOffset;
     private Vector3 flPosVelocity;
     private Vector3 flRotOffset;
     private Vector3 flRotVelocity;
     private float flBobTimer = 0f;
+    private Vector3 flDefaultPos;
+    private Quaternion flDefaultRot;
 
     void Awake()
     {
@@ -64,6 +71,12 @@ public class FPSPlayer : MonoBehaviour
 
         if (cameraTransform != null)
             camDefaultPos = cameraTransform.localPosition;
+
+        if (flashlight != null)
+        {
+            flDefaultPos = flashlight.transform.localPosition;
+            flDefaultRot = flashlight.transform.localRotation;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -106,7 +119,13 @@ public class FPSPlayer : MonoBehaviour
         else
             currentSpeed = walkSpeed;
 
-        controller.Move(input * currentSpeed * Time.deltaTime);
+        // Accelerate toward target velocity, but decelerate much faster when
+        // there's no input so the player stops crisply instead of sliding on ice.
+        Vector3 targetVel = input * currentSpeed;
+        bool hasInput = input.sqrMagnitude > 0.01f;
+        float rate = hasInput ? moveAcceleration : moveDeceleration;
+        currentHorizontalVel = Vector3.MoveTowards(currentHorizontalVel, targetVel, rate * Time.deltaTime);
+        controller.Move(currentHorizontalVel * Time.deltaTime);
 
         float targetTilt = -h * strafeTilt;
         currentTilt = Mathf.Lerp(currentTilt, targetTilt, tiltSmoothing * Time.deltaTime);
@@ -126,7 +145,8 @@ public class FPSPlayer : MonoBehaviour
         if (cameraTransform == null) return;
 
         Vector3 horizontalVel = new Vector3(controller.velocity.x, 0f, controller.velocity.z);
-        bool moving = horizontalVel.magnitude > 0.1f && isGrounded;
+        float planarSpeed = horizontalVel.magnitude;
+        bool moving = planarSpeed > 0.1f && isGrounded;
 
         Vector3 targetOffset;
 
@@ -135,10 +155,15 @@ public class FPSPlayer : MonoBehaviour
             bool running = currentSpeed >= runSpeed - 0.01f;
             float speedMul = running ? runBobMultiplier : 1f;
 
-            bobTimer += Time.deltaTime * walkBobSpeed * speedMul;
+            // Tie bob frequency AND amplitude to the real speed so walking slowly
+            // never looks like "running in place".
+            float speedFraction = Mathf.Clamp01(planarSpeed / runSpeed);
 
-            float bobY = Mathf.Sin(bobTimer) * walkBobAmount * speedMul;
-            float bobX = Mathf.Cos(bobTimer * 0.5f) * walkBobAmount * 0.6f * speedMul;
+            bobTimer += Time.deltaTime * walkBobSpeed * speedMul * speedFraction;
+
+            float amp = walkBobAmount * speedMul * speedFraction;
+            float bobY = Mathf.Sin(bobTimer) * amp;
+            float bobX = Mathf.Cos(bobTimer * 0.5f) * amp * 0.6f;
 
             targetOffset = new Vector3(bobX, bobY, 0f);
         }
@@ -182,6 +207,10 @@ public class FPSPlayer : MonoBehaviour
         flBobTimer += Time.deltaTime * flIdleBobSpeed;
         float fbobY = Mathf.Sin(flBobTimer) * flIdleBobAmount;
         float fbobX = Mathf.Cos(flBobTimer * 0.5f) * flIdleBobAmount * 0.6f;
+
+        Vector3 bob = new Vector3(fbobX, fbobY, 0f);
+        fl.localPosition = Vector3.Lerp(fl.localPosition, flDefaultPos + flPosOffset + bob, followSpeed * Time.deltaTime);
+        fl.localRotation = Quaternion.Slerp(fl.localRotation, flDefaultRot * Quaternion.Euler(flRotOffset), followSpeed * Time.deltaTime);
     }
 
     Vector3 Spring(Vector3 current, ref Vector3 velocity, Vector3 target)

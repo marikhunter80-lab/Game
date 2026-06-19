@@ -7,6 +7,10 @@ public class Flashlight : MonoBehaviour
     public KeyCode toggleKey = KeyCode.Mouse0;
     public bool startOn = false;
 
+    [Header("Quality")]
+    [Tooltip("Force the spotlight to render per-pixel so it lights only the cone surface, not the whole object via vertex lighting.")]
+    public bool forcePixelLight = true;
+
     [Header("Flicker (optional)")]
     public bool enableFlicker = false;
     public float flickerIntensity = 0.3f;
@@ -23,6 +27,11 @@ public class Flashlight : MonoBehaviour
         isOn = startOn;
         if (spotLight != null)
         {
+            // Per-pixel lighting: the cone lights only where it actually hits,
+            // instead of lighting whole low-poly objects uniformly (vertex lights).
+            if (forcePixelLight)
+                spotLight.renderMode = LightRenderMode.ForcePixel;
+
             spotLight.enabled = isOn;
             baseIntensity = spotLight.intensity;
         }

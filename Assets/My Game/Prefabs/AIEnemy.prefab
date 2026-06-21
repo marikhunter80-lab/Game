@@ -3156,21 +3156,21 @@ MonoBehaviour:
   playerTag: Player
   aiAnimator: {fileID: 3220608686570306405}
   playerHealth: {fileID: 0}
-  detectionRadius: 12
-  fieldOfView: 110
-  loseSightRadius: 16
+  detectionRadius: 22
+  fieldOfView: 140
+  loseSightRadius: 32
   sightBlockMask:
     serializedVersion: 2
     m_Bits: 4294967295
   eyeHeight: 1.6
-  patrolSpeed: 2
-  chaseSpeed: 4.5
-  acceleration: 5
+  patrolSpeed: 2.2
+  chaseSpeed: 5
+  acceleration: 14
   angularSpeed: 600
   aggressiveChance: 0.35
-  aggressiveSpeedMultiplier: 2
+  aggressiveSpeedMultiplier: 1.6
   runAnimWhenChasing: 1
-  attackRange: 5
+  attackRange: 2.2
   attackCooldown: 1.5
   attackStopDuration: 0.6
   attackDamage: 30
@@ -3184,7 +3184,7 @@ MonoBehaviour:
   searchRadius: 5
   stuckCheckInterval: 1
   stuckDistanceThreshold: 0.2
-  repathInterval: 0.25
+  repathInterval: 0.35
   repathMoveThreshold: 0.75
 --- !u!114 &3220608686570306405
 MonoBehaviour:
@@ -3200,7 +3200,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1960952117751834498}
   speedDamping: 0.12
-  disableRootMotion: 1
+  matchAnimationToMovement: 1
+  walkReferenceSpeed: 2.6
+  runReferenceSpeed: 5.5
+  minPlayback: 0.5
+  maxPlayback: 1.4
+  playbackSmoothing: 10
+  attackPlaybackLock: 1
 --- !u!1 &7429326750187208215
 GameObject:
   m_ObjectHideFlags: 0

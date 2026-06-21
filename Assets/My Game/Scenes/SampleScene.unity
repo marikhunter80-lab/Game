@@ -223,52 +223,60 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1087769244}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: aiAnimator
+      value: 
+      objectReference: {fileID: 1035691857}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: chaseSpeed
-      value: 1.21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: attackRange
-      value: 2.52
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: fieldOfView
-      value: 200
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolSpeed
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: angularSpeed
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1087769247}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: repathInterval
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: detectionRadius
-      value: 23.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: loseSightRadius
-      value: 32.1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveChance
-      value: 0.158
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolAreaRadius
-      value: 61.6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveSpeedMultiplier
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2693443937714022217, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -473,28 +481,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1087769244}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: aiAnimator
+      value: 
+      objectReference: {fileID: 1198957473}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: chaseSpeed
-      value: 1.21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: attackRange
-      value: 2.52
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: fieldOfView
-      value: 200
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolSpeed
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: angularSpeed
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: playerHealth
@@ -502,23 +514,23 @@ PrefabInstance:
       objectReference: {fileID: 1087769247}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: detectionRadius
-      value: 23.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: loseSightRadius
-      value: 32.1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveChance
-      value: 0.158
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolAreaRadius
-      value: 61.6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveSpeedMultiplier
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2693443937714022217, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -569,6 +581,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+--- !u!114 &314720810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220608686570306405, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+  m_PrefabInstance: {fileID: 1308884456}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27c266ae2899c418e872fff6a9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380934260
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +726,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380934260}
   m_CullTransparentMesh: 1
+--- !u!114 &397941552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220608686570306405, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+  m_PrefabInstance: {fileID: 1004503216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27c266ae2899c418e872fff6a9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405470273
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +842,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1022603237}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &497049651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220608686570306405, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+  m_PrefabInstance: {fileID: 1747566721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27c266ae2899c418e872fff6a9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510131769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,28 +1500,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1087769244}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: aiAnimator
+      value: 
+      objectReference: {fileID: 397941552}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: chaseSpeed
-      value: 1.21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: attackRange
-      value: 2.52
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: fieldOfView
-      value: 200
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolSpeed
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: angularSpeed
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: playerHealth
@@ -1484,23 +1533,23 @@ PrefabInstance:
       objectReference: {fileID: 1087769247}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: detectionRadius
-      value: 23.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: loseSightRadius
-      value: 32.1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveChance
-      value: 0.158
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolAreaRadius
-      value: 61.6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveSpeedMultiplier
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2693443937714022217, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1661,6 +1710,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1035691857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220608686570306405, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+  m_PrefabInstance: {fileID: 54132883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27c266ae2899c418e872fff6a9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1062187033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2066,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1022603237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198957473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220608686570306405, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+  m_PrefabInstance: {fileID: 239037328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27c266ae2899c418e872fff6a9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1223803060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,28 +2375,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1087769244}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: aiAnimator
+      value: 
+      objectReference: {fileID: 314720810}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: chaseSpeed
-      value: 1.21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: attackRange
-      value: 2.52
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: fieldOfView
-      value: 200
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolSpeed
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: angularSpeed
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: playerHealth
@@ -2333,23 +2408,23 @@ PrefabInstance:
       objectReference: {fileID: 1087769247}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: detectionRadius
-      value: 23.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: loseSightRadius
-      value: 32.1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveChance
-      value: 0.158
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolAreaRadius
-      value: 61.6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveSpeedMultiplier
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2693443937714022217, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2943,28 +3018,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1087769244}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
+      propertyPath: aiAnimator
+      value: 
+      objectReference: {fileID: 497049651}
+    - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: chaseSpeed
-      value: 1.21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: attackRange
-      value: 2.52
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: fieldOfView
-      value: 200
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolSpeed
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: angularSpeed
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: playerHealth
@@ -2972,23 +3051,23 @@ PrefabInstance:
       objectReference: {fileID: 1087769247}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: detectionRadius
-      value: 23.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: loseSightRadius
-      value: 32.1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveChance
-      value: 0.158
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: patrolAreaRadius
-      value: 61.6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1701051071950861417, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: aggressiveSpeedMultiplier
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2693443937714022217, guid: f34bc9aacadbb144cb7438adda924da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3672,7 +3751,7 @@ PrefabInstance:
       objectReference: {fileID: 28104085}
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_Range
-      value: 81.14142
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_Color.a
@@ -3696,7 +3775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_Intensity
-      value: 5.6
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_SpotAngle
@@ -3717,6 +3796,14 @@ PrefabInstance:
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7593697142278911145, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: m_Shadows.m_Strength

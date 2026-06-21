@@ -86,6 +86,10 @@ public class AIEnemy : MonoBehaviour
     private bool pendingHit = false;
     private float hitTimer = 0f;
 
+    private Vector3 homePosition;
+    // Reused buffer so the line-of-sight check allocates nothing each frame.
+    private static readonly RaycastHit[] sightHits = new RaycastHit[8];
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -103,6 +107,7 @@ public class AIEnemy : MonoBehaviour
 
     void Start()
     {
+        homePosition = transform.position;
         ConfigureAgent();
         GeneratePatrolPoints();
         EnterPatrol();
@@ -121,6 +126,13 @@ public class AIEnemy : MonoBehaviour
     {
         if (attackTimer > 0f) attackTimer -= Time.deltaTime;
         ProcessPendingHit();
+
+        // Once the player is dead, never linger on the corpse — peel off and head
+        // back to a normal patrol around the spawn area.
+        if (PlayerIsDead() && state != State.Patrol)
+        {
+            ReturnToPatrol();
+        }
 
         switch (state)
         {
@@ -319,6 +331,7 @@ public class AIEnemy : MonoBehaviour
     bool CanSeePlayer()
     {
         if (player == null) return false;
+        if (PlayerIsDead()) return false; // don't re-aggro on a corpse
 
         Vector3 eyePos = transform.position + Vector3.up * eyeHeight;
         Vector3 playerPos = player.position + Vector3.up * (eyeHeight * 0.6f);
@@ -334,17 +347,47 @@ public class AIEnemy : MonoBehaviour
             if (angle > fieldOfView * 0.5f) return false;
         }
 
-        if (Physics.Raycast(eyePos, toPlayer.normalized, out RaycastHit hit, dist, sightBlockMask, QueryTriggerInteraction.Ignore))
+        return HasClearShot(eyePos, toPlayer.normalized, dist);
+    }
+
+    // Returns true if nothing except the player (or our own body) sits on the line.
+    // Crucially ignores THIS enemy's colliders — the eye origin is inside the
+    // zombie's own capsule, so a naive raycast hits itself first and reports the
+    // player as "blocked", which is what made the detection range feel tiny.
+    bool HasClearShot(Vector3 from, Vector3 dir, float dist)
+    {
+        int count = Physics.RaycastNonAlloc(from, dir, sightHits, dist, sightBlockMask, QueryTriggerInteraction.Ignore);
+
+        float closestDist = float.MaxValue;
+        Transform closest = null;
+        for (int i = 0; i < count; i++)
         {
-            // Blocked only if we hit something that isn't the player (or one of
-            // the player's child colliders).
-            bool hitIsPlayer = hit.transform.CompareTag(playerTag) ||
-                               (player != null && hit.transform.IsChildOf(player.root));
-            if (!hitIsPlayer)
-                return false;
+            Transform t = sightHits[i].transform;
+            if (t == null) continue;
+            if (t.IsChildOf(transform)) continue; // skip our own colliders
+
+            if (sightHits[i].distance < closestDist)
+            {
+                closestDist = sightHits[i].distance;
+                closest = t;
+            }
         }
 
-        return true;
+        if (closest == null) return true; // clear line of sight
+        return closest.CompareTag(playerTag) || (player != null && closest.IsChildOf(player.root));
+    }
+
+    bool PlayerIsDead()
+    {
+        return playerHealth != null && playerHealth.IsDead();
+    }
+
+    // Rebuild the patrol route around the spawn point and resume patrolling there,
+    // so the enemy walks off rather than standing on the player's last position.
+    void ReturnToPatrol()
+    {
+        RebuildPatrolAround(homePosition);
+        EnterPatrol();
     }
 
     void ProcessPendingHit()
@@ -389,16 +432,21 @@ public class AIEnemy : MonoBehaviour
     {
         if (aiAnimator == null) return;
 
-        // Use desiredVelocity as a fallback so the walk anim plays even on the
+        // Use desiredVelocity as a fallback so the walk anim *triggers* even on the
         // frames where actual velocity briefly dips (e.g. right after repathing).
-        float speed = 0f;
+        float paramSpeed = 0f;
         if (!agent.isStopped)
-            speed = Mathf.Max(agent.velocity.magnitude, agent.desiredVelocity.magnitude);
+            paramSpeed = Mathf.Max(agent.velocity.magnitude, agent.desiredVelocity.magnitude);
 
-        aiAnimator.SetSpeed(speed);
+        aiAnimator.SetSpeed(paramSpeed);
 
         bool running = state == State.Chase && (isAggressive || runAnimWhenChasing);
         aiAnimator.SetRunning(running);
+
+        // Foot-sync: scale playback to the REAL ground speed (not desiredVelocity)
+        // so the legs stop "running in place" when the body is moving slowly.
+        float worldSpeed = agent.isStopped ? 0f : agent.velocity.magnitude;
+        aiAnimator.SetMoveSpeed(worldSpeed);
     }
 
     void HandleStuckCheck()

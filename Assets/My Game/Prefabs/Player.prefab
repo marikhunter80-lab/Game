@@ -212,17 +212,17 @@ MonoBehaviour:
   walkSpeed: 10
   runSpeed: 15
   jumpHeight: 1.2
-  gravity: -20
-  moveAcceleration: 14
-  moveDeceleration: 80
+  gravity: -22
+  moveAcceleration: 80
+  moveDeceleration: 95
   cameraTransform: {fileID: 6239628356986852739}
   mouseSensitivity: 2
   maxLookAngle: 89
   headIdleBobAmount: 0.015
   headIdleBobSpeed: 1.6
-  walkBobAmount: 0.05
-  walkBobSpeed: 9
-  runBobMultiplier: 1.6
+  walkBobAmount: 0.035
+  walkBobSpeed: 7.5
+  runBobMultiplier: 1.35
   bobSmoothing: 8
   strafeTilt: 1.5
   tiltSmoothing: 6

@@ -8,10 +8,10 @@ public class FPSPlayer : MonoBehaviour
     public float runSpeed = 10.5f;
     public float jumpHeight = 1.2f;
     public float gravity = -20f;
-    [Tooltip("How quickly the player accelerates up to the target speed.")]
-    public float moveAcceleration = 45f;
+    [Tooltip("How quickly the player accelerates up to target speed. HIGH = snappy/responsive, LOW = heavy/sluggish. Below ~50 starts feeling like dragging weight.")]
+    public float moveAcceleration = 70f;
     [Tooltip("How quickly the player stops when there is no input. Higher = snappier, less ice.")]
-    public float moveDeceleration = 80f;
+    public float moveDeceleration = 90f;
 
     [Header("Look")]
     public Transform cameraTransform;

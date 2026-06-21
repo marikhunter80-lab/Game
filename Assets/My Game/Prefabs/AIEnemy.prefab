@@ -522,7 +522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1807283963020398480
 Transform:
   m_ObjectHideFlags: 0
@@ -3158,6 +3158,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   detectionRadius: 22
   fieldOfView: 140
+  proximityRadius: 6
   loseSightRadius: 32
   sightBlockMask:
     serializedVersion: 2
@@ -3199,7 +3200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1960952117751834498}
-  speedDamping: 0.12
+  speedDamping: 0.1
   matchAnimationToMovement: 1
   walkReferenceSpeed: 2.6
   runReferenceSpeed: 5.5

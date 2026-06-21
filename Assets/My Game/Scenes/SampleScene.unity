@@ -3737,6 +3737,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5900890159979350729, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
+      propertyPath: runSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900890159979350729, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
+      propertyPath: walkSpeed
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6707892685395087646, guid: 860f2b72d03f57a419d6efa3d9377f16, type: 3}
       propertyPath: healthSlider
       value: 

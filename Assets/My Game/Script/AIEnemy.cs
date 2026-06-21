@@ -17,6 +17,8 @@ public class AIEnemy : MonoBehaviour
     [Header("Detection")]
     public float detectionRadius = 22f;
     public float fieldOfView = 140f;
+    [Tooltip("The player is sensed within this radius regardless of facing direction (hearing/presence). Usually smaller than detectionRadius — stops you from sneaking right behind the enemy unnoticed.")]
+    public float proximityRadius = 6f;
     public float loseSightRadius = 32f;
     public LayerMask sightBlockMask = ~0;
     public float eyeHeight = 1.6f;
@@ -341,7 +343,9 @@ public class AIEnemy : MonoBehaviour
         float activeRadius = (state == State.Chase || state == State.Search) ? loseSightRadius : detectionRadius;
         if (dist > activeRadius) return false;
 
-        if (state == State.Patrol)
+        // While patrolling, the player must be inside the vision cone — UNLESS they
+        // are close enough to be sensed from any direction (incl. directly behind).
+        if (state == State.Patrol && dist > proximityRadius)
         {
             float angle = Vector3.Angle(transform.forward, toPlayer);
             if (angle > fieldOfView * 0.5f) return false;
@@ -482,6 +486,8 @@ public class AIEnemy : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, proximityRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, loseSightRadius);
         Gizmos.color = Color.cyan;

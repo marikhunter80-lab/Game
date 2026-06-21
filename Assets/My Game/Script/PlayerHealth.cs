@@ -1,27 +1,30 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Player health with a UI Slider readout. Slider is forced to max 100 and
-// reset to full on Start. Reaching 0 health triggers a (debug) game over.
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health")]
     public float maxHealth = 100f;
-    public float currentHealth;
+    float currentHealth;
+    public GameObject gameOverPanel;
 
     [Header("UI")]
-    [Tooltip("Health bar slider. Max value is set to maxHealth and reset to full on Start.")]
     public Slider healthSlider;
+    public CanvasGroup damagePlayerVigniete;
+    bool isDead = false;
 
-    [Header("State")]
-    public bool isDead = false;
+    private Coroutine flashCoroutine;
 
     void Start()
     {
         ResetHealth();
+        if (damagePlayerVigniete != null)
+        {
+            damagePlayerVigniete.alpha = 0f;
+        }
     }
 
-    // Full heal + slider reset. Call at level start / respawn.
     public void ResetHealth()
     {
         currentHealth = maxHealth;
@@ -29,12 +32,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (healthSlider != null)
         {
-            healthSlider.maxValue = maxHealth; // max value 100
-            healthSlider.value = maxHealth;    // value 100 at start
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = maxHealth;
         }
     }
 
-    // Called by the enemy when an attack lands. e.g. amount = 30.
     public void TakeDamage(float amount)
     {
         if (isDead) return;
@@ -44,21 +46,32 @@ public class PlayerHealth : MonoBehaviour
         if (healthSlider != null)
             healthSlider.value = currentHealth;
 
-        Debug.Log($"[PlayerHealth] -{amount} damage  ->  {currentHealth}/{maxHealth}");
+        if (damagePlayerVigniete != null)
+        {
+            if (flashCoroutine != null) StopCoroutine(flashCoroutine);
+            flashCoroutine = StartCoroutine(FlashDamageEffect());
+        }
 
         if (currentHealth <= 0f)
             Die();
     }
 
+    IEnumerator FlashDamageEffect()
+    {
+        damagePlayerVigniete.alpha = 1f;
+        while (damagePlayerVigniete.alpha > 0f)
+        {
+            damagePlayerVigniete.alpha -= Time.deltaTime * 2.5f; // Viteza de fade-out (cu cât e mai mare numărul, cu atât dispare mai repede)
+            yield return null;
+        }
+        damagePlayerVigniete.alpha = 0f;
+    }
+
     void Die()
     {
         isDead = true;
-        Debug.Log("GAME OVER");
-        // TODO next stage: show Game Over UI / restart scene here.
+        gameOverPanel.SetActive(true);
     }
 
-    public bool IsDead()
-    {
-        return isDead;
-    }
+    public bool IsDead() => isDead;
 }
